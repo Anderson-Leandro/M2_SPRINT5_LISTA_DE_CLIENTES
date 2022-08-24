@@ -1,6 +1,6 @@
-import Api from "./api.js"
+import { Api } from "./api.js"
 
-class CadastrarCliente {
+export class CadastrarCliente {
 
     static receberValores() {
 
@@ -36,9 +36,3 @@ class CadastrarCliente {
 }
 
 CadastrarCliente.receberValores()
-
-
-
-
-
-export default CadastrarCliente

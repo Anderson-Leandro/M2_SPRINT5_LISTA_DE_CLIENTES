@@ -1,4 +1,4 @@
-class Cards {
+export class Cards {
 
     static criaCard(cliente) {
         const li = document.createElement("li")
@@ -59,9 +59,8 @@ class Cards {
     }
 
 
-    static async listarCard (clientes){
+    static listarCard (clientes){
         const ul = document.querySelector(".container")
-
         ul.innerHTML = ""
 
         clientes.forEach(element => {
@@ -70,8 +69,3 @@ class Cards {
         
     }
 }
-
-
-
-
-export default Cards

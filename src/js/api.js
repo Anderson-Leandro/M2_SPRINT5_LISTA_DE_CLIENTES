@@ -1,4 +1,8 @@
-class Api {
+import { Cards } from "./cards.js"
+import { EditarClientes } from "./editarCliente.js"
+import { CadastrarCliente } from "./cadastrarCliente.js"
+
+export class Api {
 
     static baseUrl = "https://atividade-api-clientes.herokuapp.com/clientes"
     static headers = {
@@ -15,7 +19,6 @@ class Api {
     }
 
     static async cadastrarCliente(data) {
-        console.log(data)
         const novoCliente = await fetch(this.baseUrl, {
             method: "POST",
             headers: this.headers,
@@ -30,6 +33,8 @@ class Api {
 
     static async editarCliente(id, data) {
 
+
+
     }
 
     static async deletarCliente(id) {
@@ -41,6 +46,4 @@ class Api {
 }
 
 
-
-
-export default Api
+Cards.listarCard(await Api.listarClientes())
