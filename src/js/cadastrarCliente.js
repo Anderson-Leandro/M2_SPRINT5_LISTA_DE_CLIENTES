@@ -30,8 +30,6 @@ export class CadastrarCliente {
             return Api.cadastrarCliente(novoCliente)
 
         })
-
-        return
     }
 }
 

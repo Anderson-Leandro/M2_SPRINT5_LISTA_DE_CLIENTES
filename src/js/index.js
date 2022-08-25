@@ -1,3 +1,6 @@
+import { Api } from "./api.js"
+
+
 export class Cards {
 
     static criaCard(cliente) {
@@ -59,13 +62,17 @@ export class Cards {
     }
 
 
-    static listarCard (clientes){
+    static listarCard(clientes) {
         const ul = document.querySelector(".container")
+
         ul.innerHTML = ""
 
         clientes.forEach(element => {
             ul.append(this.criaCard(element))
-        });       
-        
+        });
+
     }
 }
+
+
+Cards.listarCard(await Api.listarClientes())

@@ -1,16 +1,11 @@
-import { Cards } from "./cards.js"
-import { EditarClientes } from "./editarCliente.js"
-import { CadastrarCliente } from "./cadastrarCliente.js"
-
 export class Api {
 
     static baseUrl = "https://atividade-api-clientes.herokuapp.com/clientes"
     static headers = {
         "Content-Type": "application/json",
     }
-    static async listarClientes() {
-
-        const clientes = await fetch(this.baseUrl)
+    static async listarClientes(teste = "") {
+        const clientes = await fetch(`${this.baseUrl}/${teste}`)
             .then(resp => resp.json())
             .then(resp => resp)
             .catch(err => console.log(err))
@@ -33,17 +28,26 @@ export class Api {
 
     static async editarCliente(id, data) {
 
-
-
+        const atualizaCliente = await fetch(`${this.baseUrl}/${id}`, {
+            method: "PATCH",
+            headers: this.headers,
+            body: JSON.stringify(data)
+        })
+            .then(resp => resp.json())
+            .then(resp => console.log(resp))
+            .catch(err => console.log(err))
     }
 
     static async deletarCliente(id) {
+        const deletarCliente = await fetch(`${this.baseUrl}/${id}`, {
+            method: "DELETE",
+            headers: this.headers
+        })
+            .then(resp => console.log(resp))
+            .catch(err => console.log(err))
 
+        return deletarCliente
     }
-
-
 
 }
 
-
-Cards.listarCard(await Api.listarClientes())
